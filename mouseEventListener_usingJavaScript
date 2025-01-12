@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Event listners</title>
+	<style>
+	#box{
+		width: 150px;
+		height: 150px;
+		background-color: cyan;
+		text-align: center;
+		border: 2px solid black;
+	}
+	</style>
+</head>
+<body>
+	<div id="box">Click Here or Hover</div>
+	<script>
+		const box=document.getElementById("box")
+		
+		box.addEventListener("mouseover",()=>{
+		document.body.style.backgroundColor="yellow";
+		box.style.backgroundColor="white"
+		box.textContent="MOUSE OVER!";
+		})
+
+		box.addEventListener("mouseout",()=>{
+		box.style.backgroundColor="cyan";
+		document.body.style.backgroundColor="white"
+		box.textContent="MOUSE OUT!Click Here or Hover";
+		})
+
+		box.addEventListener("click",()=>{
+		box.style.backgroundColor="orange";
+		document.body.style.backgroundColor="cyan";
+		box.textContent="MOUSE CLICKED!"
+		})
+	</script>
+</body>
+</html>
