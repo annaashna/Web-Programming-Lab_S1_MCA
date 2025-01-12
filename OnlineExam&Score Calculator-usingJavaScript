@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Online Exam</title>
+</head>
+<body>
+    <h1>Marvel Online Exam</h1>
+    <form id="examForm">
+
+        <!-- Question 1 -->
+        <p>1. Who is the ruler of the Dark Dimension?</p>
+        <input type="radio" name="q1" value="a"> a) Doctor Strange <br>
+        <input type="radio" name="q1" value="b"> b) Dormammu <br>
+        <input type="radio" name="q1" value="c"> c) Loki <br>
+        <input type="radio" name="q1" value="d"> d) Thanos <br>
+
+        <!-- Question 2 -->
+        <p>2. Who created The Infinity Stones?</p>
+        <input type="radio" name="q2" value="a"> a) Odin <br>
+        <input type="radio" name="q2" value="b"> b) The Celestials <br>
+        <input type="radio" name="q2" value="c"> c) Thanos <br>
+        <input type="radio" name="q2" value="d"> d) Eternals <br>
+
+        <!-- Question 3 -->
+        <p>3. What is the name of the ancient super-computer created by Tony Stark?</p>
+        <input type="radio" name="q3" value="a"> a) Ultron <br>
+        <input type="radio" name="q3" value="b"> b) Jarvis <br>
+        <input type="radio" name="q3" value="c"> c) Friday <br>
+        <input type="radio" name="q3" value="d"> d) Vision <br>
+
+        <!-- Question 4 -->
+        <p>4. Wanda Maximoff, also known as...</p>
+        <input type="radio" name="q4" value="a"> a) Scarlet Witch <br>
+        <input type="radio" name="q4" value="b"> b) Black Widow <br>
+        <input type="radio" name="q4" value="c"> c) WandaVision <br>
+        <input type="radio" name="q4" value="d"> d) The Witch of Wundagore <br>
+
+        <!-- Question 5 -->
+        <p>5. Who all are the Original 6 Avengers from the given list? (Multiple choice)</p>
+        <input type="checkbox" name="q5" value="a"> a) Spider-Man <br>
+        <input type="checkbox" name="q5" value="b"> b) Hawkeye <br>
+        <input type="checkbox" name="q5" value="c"> c) Black Panther <br>
+        <input type="checkbox" name="q5" value="d"> d) Black Widow <br>
+
+        <button type="button" onclick="submitExam()">Submit Exam</button>
+    </form>
+
+    <div id="result"></div>
+    <script>
+    function submitExam() {
+    var score = 0;
+
+    // Check if the answers are correct for each question
+    if (document.querySelector('input[name="q1"]:checked')?.value === "b") {
+        score++;
+    }
+    if (document.querySelector('input[name="q2"]:checked')?.value === "b") {
+        score++;
+    }
+    if (document.querySelector('input[name="q3"]:checked')?.value === "a") {
+        score++;
+    }
+    if (document.querySelector('input[name="q4"]:checked')?.value === "a") {
+        score++;
+    }
+
+    // Check for multiple correct answers for Question 5
+    var q5Answers = document.querySelectorAll('input[name="q5"]:checked');
+    if (q5Answers.length === 2 &&
+        Array.from(q5Answers).every(input => input.value === "b" || input.value === "d")) {
+        score++;
+    }
+
+    // Display the result
+    document.getElementById('result').textContent = "You scored " + score + " out of 5.";
+}
+
+</script>
+</body>
+</html>
+
