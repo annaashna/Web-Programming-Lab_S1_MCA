@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title>Form validation</title>
+<body>
+	<h1>Form Validation Using JavaScript</h1>
+	Name: <br> <input type="text" id="name"/> <br><br>
+	Email: <br> <input type="email" id="email"/> <br><br>
+	Gender: <br> 
+	<input type="radio" id="gen1" name="gender" value="Male"/>Male
+	<input type="radio" id="gen2" name="gender" value="Female"/>Female <br><br>
+	DOB: <br> <input type="date" id="dob"/> <br><br>
+
+	<select id="course" name="course">
+		<option value="Choose" selected>Select a Course</option>
+		<option value="B.tech">B.Tech</option>
+		<option value="MCA">MCA</option>
+		<option value="M.tech">M.tech</option>
+	</select><br><br>
+
+	Select intrested clubs:<br>
+	<input type="checkbox" id="cb1"/>Tech Club<br>
+	<input type="checkbox" id="cb2"/>Media Club<br>
+	<input type="checkbox" id="cb3"/>Dance Club<br><br>
+
+
+	password: <input type="password" id="p1"/><br><br>
+	Confirm Password: <input type="password" id="p2"/><br><br>
+
+	<input type="button" value="submit" onclick="validation()"/>
+
+	<script>
+	function validation(){
+	
+	const name=document.getElementById("name").value.trim()
+	const email=document.getElementById("email").value.trim()
+	const gen1=document.getElementById("gen1").value
+	const gen2=document.getElementById("gen2").value
+	const dob=document.getElementById("dob").value
+	const course=document.getElementById("course").value
+	const cb1=document.getElementById("cb1").checked
+	const cb2=document.getElementById("cb2").chechked
+	const cb3=document.getElementById("cb3").checked
+	const p1=document.getElementById("p1").value
+	const p2=document.getElementById("p2").value
+
+	let errMsg=""
+	
+	if(!name){
+	errMsg+="Name is required!\n"}
+	
+	if(!email){
+	errMsg+="Email is required!\n"
+	}
+	else if(!/@./.test(email)){
+	errMsg+="Enter a Valid Email Address!\n"
+	}
+	
+	if(!gen1 && !gen2){
+	errMsg+="Select a Gender!\n"
+	}
+
+	if(!dob){
+	errMsg+="DOB is required!\n"
+	}
+
+	if(course==="Choose"){
+	errMsg+="Select a Course\n"
+	}
+
+	if(!cb1 && !cb2 && !cb3){
+	errMsg+="Select atleast 1 Club!\n"
+	}
+
+	if(!p1){
+	errMsg+="Password Required!"
+	}
+	else if(p1.length<8){
+	errMsg+="Password should have atleast 8 Characters"
+	}
+
+	if(p1!==p2){
+	errMsg+="Passwords doesn't match!\n"
+	}
+
+	if(errMsg){
+	alert(errMsg)
+	}
+	else{
+	alert("Form Submitted Successfully!")
+	}
+	}
+	</script>
+</body>
+</head>
+</html>
