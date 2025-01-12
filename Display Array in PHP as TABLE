@@ -1,0 +1,23 @@
+<html>
+<head><title>Criket Players</title></head>
+<body>
+	<?php
+	$players=array("Rohit Sharma","Virat Kohli","Shubman Gill","Hardik Pandya");
+	?>
+	<h1>List of Indian Cricket players</h1>
+	<table border="1">
+		<tr>
+			<th>No.s</th>
+			<th>Player's Nmae</th>
+		</tr>
+	<?php
+	for($i=0;$i<count($players);$i++){
+		echo "<tr>";
+		echo "<td>".($i+1)."</td>";
+		echo "<td>".$players[$i]."</td>";
+		echo "</tr>";
+	}
+	?>
+	</table>
+</body>
+</html>
