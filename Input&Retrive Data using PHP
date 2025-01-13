@@ -1,0 +1,67 @@
+<?php
+$con=new mysqli("localhost","root","","mca_mits_13");
+
+if($con->connect_error){
+	die("Connection Error".$con->connect_error);
+}else{
+echo"connected successfully!";
+}
+?>
+
+<html>
+<head>
+<title>sql</title>
+<body>
+<form method="POST">
+Name: <input type="text" name="fullname" id="fullnameid"/>
+Age: <input type="number" name="age" id="ageid"/>
+DOB: <input type="date" name="date" id="dateid"/>
+Email: <input type="email" name="email" id="emailid"/>
+<input type="submit"/>
+</form>
+
+<table border="1">
+	<tr>
+	<th>NAME</th>
+	<th>AGE</th>
+	<th>DOB</th>
+	<th>E-MAIL</th>
+	</tr>
+<?php
+if($_SERVER["REQUEST_METHOD"]=="POST"){
+$n=$_POST['fullname'];
+$a=$_POST['age'];
+$dob=$_POST['date'];
+$email=$_POST['email'];
+
+$sql="INSERT INTO study(name,age,dob,email)VALUES('$n','$a','$dob','$email')";
+
+if($con->query($sql)===TRUE){
+echo "record added successfully!";
+}else{
+echo "Error in insertion".$con->error;
+}
+}
+
+$sql="SELECT * FROM study";
+$result=$con->query($sql);
+
+if($result->num_rows>0)
+{
+while($row=$result->fetch_assoc()){
+echo"
+<tr>
+<td>{$row['name']}</td>
+<td>{$row['age']}</td>
+<td>{$row['dob']}</td>
+<td>{$row['email']}</td>
+</tr>";
+}
+}
+
+?>
+</table>
+</head>
+</body>
+</html>
+
